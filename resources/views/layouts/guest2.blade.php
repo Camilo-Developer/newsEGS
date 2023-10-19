@@ -28,7 +28,7 @@
                             </span>
                         </div>
                         <div class="topTools btTopToolsRight btTextRight">
-                            <a href="{{route('news.inicio')}}" target="_self" class="btIconWidget btAccentIconWidget btWidgetWithText">
+                            <a href="{{route('news.inicio')}}" target="_self" class="btIconWidget btAccentIconWidget btWidgetWithText text-decoration-none">
                                 <span class="btIconWidgetIcon">
                                     <span class="btIco btIcoDefaultType btIcoDefaultColor">
                                         <span data-ico-fa="&#xf1ea;" class="btIcoHolder">                                            
@@ -41,7 +41,7 @@
                                     </span>
                                 </span>
                             </a>
-                            <a href="{{route('login')}}" target="_self" class="btIconWidget btAccentIconWidget btWidgetWithText">
+                            <a href="{{route('login')}}" target="_self" class="btIconWidget btAccentIconWidget btWidgetWithText text-decoration-none">
                                 <span class="btIconWidgetIcon">
                                     <span class="btIco btIcoDefaultType btIcoDefaultColor">
                                         <span data-ico-fa="&#xf004;" class="btIcoHolder">
@@ -156,7 +156,7 @@
                             <ul id="menu-primary-menu" class="menu">
                                 <li id="menu-item-3950"
                                     class="btMenuWideDropdown bt_mega_menu menu-item menu-item-type-post_type menu-item-object-page menu-item-3950">
-                                    <span class="bt_mega_menu_title"><a href="{{route('news.inicio')}}">Inicio</a></span>
+                                    <span class="bt_mega_menu_title"><a class="text-decoration-none" href="{{route('news.inicio')}}">Inicio</a></span>
                                     
                                 </li>
                                 
@@ -207,12 +207,12 @@
                                                 <div class="menu-footer-menu-container">
                                                     <ul id="menu-footer-menu" class="menu">
                                                         <li id="menu-item-3901" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3901">
-                                                            <a href="{{route('news.inicio')}}">
+                                                            <a class="text-decoration-none" href="{{route('news.inicio')}}">
                                                                 Inicio
                                                             </a>
                                                         </li>
                                                         <li id="menu-item-3827" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3827">
-                                                            <a href="#">
+                                                            <a class="text-decoration-none" href="#">
                                                                 Productos
                                                             </a>
                                                         </li>
@@ -252,12 +252,12 @@
                                                 <div class="menu-footer-menu-container">
                                                     <ul id="menu-footer-menu-1" class="menu">
                                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3901">
-                                                            <a href="{{route('news.inicio')}}">
+                                                            <a class="text-decoration-none" href="{{route('news.inicio')}}">
                                                                 Inicio
                                                             </a>
                                                         </li>
                                                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3827">
-                                                            <a href="#">
+                                                            <a class="text-decoration-none" href="#">
                                                                 Productos
                                                             </a>
                                                         </li>

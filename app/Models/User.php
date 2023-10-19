@@ -75,11 +75,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\State\State', 'state_id');
     }
 
-    public function categories()
-    {
-        return $this->belongsToMany('App\Models\Category\Category', 'users_categories');
-    }
-
     public function socialnetworks()
     {
         return $this->hasMany('App\Models\SocialNetwork\SocialNetwork', 'user_id');

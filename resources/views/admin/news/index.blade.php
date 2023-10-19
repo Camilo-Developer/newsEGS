@@ -33,18 +33,24 @@
                        <div class="col-12">
                            <div class="row">
                                @foreach($news as $new)
-                                   <a href="#" class="text-white">
-                                       <div class="col-md-12 col-lg-6 col-xl-4">
-                                           <div class="card mb-2 bg-gradient-dark">
-                                               <img class="card-img-top" src="{{asset('storage/' . $new->imagen)}}" alt="imagen_principal_noticia">
-                                               <div class="card-img-overlay d-flex flex-column justify-content-end">
-                                                   <h5 class="card-title text-primary text-white">{{$new->title}}</h5>
-                                                   <p class="card-text text-white pb-2 pt-1">{{$new->pre_description}}</p>
-                                                   <div><i class="fa fa-clock"></i> {{$new->created_at->format('M d, Y')}}</div>
+                                   <div class="col-md-12 col-lg-6 col-xl-4 ">
+                                       <div class="card mb-2 bg-gradient-dark">
+                                           <img class="card-img-top" src="{{asset('storage/' . $new->imagen)}}" alt="imagen_principal_noticia">
+                                           <div class="card-img-overlay d-flex flex-column ">
+                                               <div class="d-flex justify-content-end">
+                                                   @can('admin.news.edit')
+                                                   <a href="{{route('admin.news.edit',$new)}}"  class="btn btn-warning btn-sm" ><i class="fa fa-edit"></i></a>
+                                                   @endcan
+                                                   <a href="{{route('admin.news.show',$new)}}" style="margin-left: 5px;" class="btn btn-sm btn-success">
+                                                       <i class="fa fa-eye"></i>
+                                                   </a>
                                                </div>
+                                               <h5 class="card-title text-primary text-white">{{$new->title}}</h5>
+                                               <p class="card-text text-white pb-2 pt-1">{!! $new->pre_description !!}</p>
+                                               <div><i class="fa fa-clock"></i> {{$new->created_at->format('M d, Y')}}</div>
                                            </div>
                                        </div>
-                                   </a>
+                                   </div>
                                @endforeach
                            </div>
                        </div>
@@ -59,7 +65,7 @@
         </div>
         @can('admin.news.create')
             <div class="modal fade" id="modal_crear_noticia"  aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title"><i class="fa fa-check-circle"></i> Nueva Noticia</h4>
@@ -71,49 +77,78 @@
                             @csrf
                             @method('POST')
                             <div class="modal-body">
-                                <div style="max-height: 365px; overflow-y: scroll; overflow-x: hidden">
-                                    <div class="d-flex justify-content-end">
-                                        <span class="text-danger mt-1">* </span><span>Campo requerido.</span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="imagen"><span class="text-danger">*</span> Imagen principal:</label>
-                                        <input type="file" name="imagen" required class="form-control form-control-border" id="imagen">
-                                    </div>
+                                <div class="container-fluid">
+                                    <div style="max-height: 365px; overflow-y: scroll; overflow-x: hidden">
+                                        <div class="d-flex justify-content-end">
+                                            <span class="text-danger mt-1">* </span><span>Campo requerido.</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imagen"><span class="text-danger">*</span> Imagen principal:</label>
+                                            <input type="file" name="imagen"  class="form-control form-control-border" id="imagen">
+                                        </div>
 
-                                    <div class="form-group">
-                                        <label for="title"><span class="text-danger">*</span> Titulo de la noticia:</label>
-                                        <input type="text" name="title" required class="form-control form-control-border" id="title" placeholder="Título">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="pre_description"><span class="text-danger">*</span> Pre description:</label>
-                                        <input type="text" name="pre_description" required class="form-control form-control-border" id="pre_description" placeholder="pre_description">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description">Descripcion:</label>
-                                        <input type="text" name="description" required class="form-control form-control-border" id="description" placeholder="description">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="sub_imagen">Imagen o video secundario:</label>
-                                        <input type="file" name="sub_imagen" required class="form-control form-control-border" id="sub_imagen">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="document">Documento:</label>
-                                        <input type="file" name="document" required class="form-control form-control-border" id="document">
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="title"><span class="text-danger">*</span> Titulo de la noticia:</label>
+                                            <input type="text" name="title"  class="form-control form-control-border" id="title" placeholder="Título">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pre_description"><span class="text-danger">*</span> Pre description:</label>
+                                            <textarea id="pre_description" name="pre_description"  class="form-control" style="height: 500px!important;">
+                                            </textarea>
+                                        </div>
 
-                                    <div class="form-group">
-                                        <label for="document">state_id:</label>
-                                        <input type="text" name="state_id" required class="form-control form-control-border" id="document">
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="description">Descripcion:</label>
+                                            <textarea id="description" name="description"  class="form-control" style="height: 500px!important;">
+                                        </textarea>
+                                        </div>
 
-                                    <div class="form-group">
-                                        <label for="document">category_id:</label>
-                                        <input type="text" name="category_id" required class="form-control form-control-border" id="document">
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label for="document">user_id:</label>
-                                        <input type="text" name="user_id" required class="form-control form-control-border" id="document">
+                                        <div class="form-group">
+                                            <label for="sub_imagen">Imagen o video secundario:</label>
+                                            <input type="file" name="sub_imagen"  class="form-control form-control-border" id="sub_imagen">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="document">Documento:</label>
+                                            <input type="file" name="document"  class="form-control form-control-border" id="document">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="state_id"><span class="text-danger mt-1">* </span>  Estado de la noticia:</label>
+                                            <select class="custom-select form-control-border" name="state_id" id="state_id">
+                                                <option >--Seleccionar Estado--</option>
+                                                @foreach($states as $state)
+                                                    <option value="{{$state->id}}" {{ old('state_id') == $state->id ? 'selected' : '' }}>{{$state->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        @error('state_id')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                        <div class="form-group">
+                                            <label for="category_id"><span class="text-danger mt-1">* </span>  Categoria de la noticia:</label>
+                                            <select class="custom-select form-control-border" name="category_id" id="category_id">
+                                                <option >--Seleccionar categoria--</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        @error('category_id')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                        <div class="form-group">
+                                            <label for="user_id"><span class="text-danger mt-1">* </span>  Usuario de la noticia:</label>
+                                            <select class="custom-select form-control-border" name="user_id" id="user_id">
+                                                <option >--Seleccionar Usuario--</option>
+                                                @foreach($users as $user)
+                                                    <option value="{{$user->id}}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{$user->email}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        @error('user_id')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -127,4 +162,27 @@
             </div>
         @endcan
     </section>
+@endsection
+@section('js')
+    <script>
+        $(function () {
+            //Add text editor
+            $('#pre_description').summernote(
+                {
+                    tabsize: 2,
+                    height: 200
+                }
+            );
+        });
+        $(function () {
+            //Add text editor
+            $('#description').summernote(
+                {
+                    tabsize: 2,
+                    height: 200
+                }
+            );
+        });
+    </script>
+
 @endsection

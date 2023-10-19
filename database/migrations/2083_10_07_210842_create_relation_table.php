@@ -27,10 +27,6 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
         });
-        Schema::table('users_categories', function ($table) {
-            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
-        });
     }
 
     /**

@@ -22,13 +22,6 @@ class Category extends Model
         return $this->belongsTo('App\Models\State\State', 'state_id');
     }
 
-
-    public function users()
-    {
-        return $this->belongsToMany('App\Models\User', 'users_categories');;
-    }
-
-
     public function news()
     {
         return $this->hasMany('App\Models\New\News', 'category_id');

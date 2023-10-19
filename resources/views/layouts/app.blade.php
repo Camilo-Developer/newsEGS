@@ -116,7 +116,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('inicio')}}" class="nav-link">
+                        <a href="{{route('news.inicio')}}" class="nav-link">
                             <i class="fa fa-home nav-icon " aria-hidden="true"></i>
                             <p>
                                 Inicio News
@@ -134,12 +134,12 @@
                             </a>
                         </li>
                     @endcan
-                    @can('admin.categories.index')
+                    @can('admin.users.index')
                         <li class="nav-item">
-                            <a href="{{route('admin.categories.index')}}" class="nav-link @if($_SERVER['REQUEST_URI'] === "/admin/categories") active @endif">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link @if(Str::startsWith(request()->getRequestUri(), '/admin/users')) active @endif">
                                 <i class="nav-icon fab fa-product-hunt"></i>
-                                <p class="Categorias">
-                                    Categorias
+                                <p>
+                                    Usuarios
                                 </p>
                             </a>
                         </li>
@@ -164,19 +164,16 @@
                             </a>
                         </li>
                     @endcan
-
-
-                    @can('admin.users.index')
-                    <li class="nav-item">
-                        <a href="{{ route('admin.users.index') }}" class="nav-link @if(Str::startsWith(request()->getRequestUri(), '/admin/users')) active @endif">
-                            <i class="nav-icon fab fa-product-hunt"></i>
-                            <p>
-                                Usuarios
-                            </p>
-                        </a>
-                    </li>
+                    @can('admin.categories.index')
+                        <li class="nav-item">
+                            <a href="{{route('admin.categories.index')}}" class="nav-link @if($_SERVER['REQUEST_URI'] === "/admin/categories") active @endif">
+                                <i class="nav-icon fab fa-product-hunt"></i>
+                                <p class="Categorias">
+                                    Categorias
+                                </p>
+                            </a>
+                        </li>
                     @endcan
-
                     @can('admin.news.index')
                         <li class="nav-item">
                             <a href="{{ route('admin.news.index') }}" class="nav-link @if(Str::startsWith(request()->getRequestUri(), '/admin/news')) active @endif">
@@ -187,7 +184,6 @@
                             </a>
                         </li>
                     @endcan
-
                     <li class="nav-header ">Configuraciones</li>
                     <li class="nav-item" title="{{auth()->user()->email}}">
                         <a   class="nav-link disabled">
