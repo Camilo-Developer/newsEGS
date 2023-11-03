@@ -8061,7 +8061,8 @@ body.rtl .btArticleViewsCount:before {
     content: "\e66f";
     }
 .video.btSinglePostTemplate .btPostImageHolder .btSinglePostTopMetaData .btSinglePostFormat:after {
-    content: "\e624";
+     font-family: "Font Awesome 5 Free"; /* Asegúrate de que el nombre de la fuente sea el correcto */
+    content: "\f144"; /* Cambia el código Unicode al correspondiente a tu icono */
     margin-left: 2px;
     }
 .audio.btSinglePostTemplate .btPostImageHolder .btSinglePostTopMetaData .btSinglePostFormat:after {
@@ -21744,10 +21745,10 @@ body.rtl .btDash.topDash .btSuperTitle {
     color: #fff;
     }
 .nsNext.nbs a:before {
-    content: '\ea7d';
+    content: '>';
     }
 .nsPrev.nbs a:before {
-    content: '\ea7c';
+    content: '<';
     }
 .btLightSkin .nbs a:hover:before,
 .btDarkSkin .btLightSkin .nbs a:hover:before,
@@ -23913,6 +23914,11 @@ body > .btMediaBoxPopup .btMediaBoxPopupClose {
     position: absolute;
     top: -18px;
     right: -18px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     z-index: 100;
     border-radius: 50%;
@@ -23929,8 +23935,9 @@ body > .btMediaBoxPopup .btMediaBoxPopupClose {
     transform: translateZ(0);
     }
 body > .btMediaBoxPopup .btMediaBoxPopupClose:before {
-    content: "\e680";
-    font: normal 36px/1 Icon7Stroke;
+    font-family: "Font Awesome 5 Free";
+    content: "\f057";
+    
     display: block;
     }
 body > .btMediaBoxPopup .btMediaBoxPopupClose:hover {

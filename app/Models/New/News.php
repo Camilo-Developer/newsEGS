@@ -16,6 +16,8 @@ class News extends Model
         'title',
         'pre_description',
         'description',
+        'type_file',
+        'direction_file',
         'sub_imagen',
         'document',
         'state_id',

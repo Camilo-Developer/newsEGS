@@ -64,10 +64,19 @@
                                             {!! $news->description !!}
                                         </div>
                                         <div class="col-12 col-md-6">
-                                            <img style="width: 100%; height: 200px;" class="card-img-top" src="{{asset('storage/'.$news->sub_imagen)}}" alt="Dist Photo 1">
+                                            @if($news->type_file == 1)
+                                                <img style="width: 100%; height: 200px;" class="card-img-top" src="{{asset('storage/'.$news->sub_imagen)}}" alt="Dist Photo 1">
+
+                                            @elseif($news->type_file == 2)
+                                                <video src="{{asset('storage/'.$news->sub_imagen)}}" width="200" height="300" controls></video>
+                                            @elseif($news->type_file == 3)
+                                                <audio src="{{asset('storage/'.$news->sub_imagen)}}" controls></audio>
+                                            @endif
                                         </div>
                                         <div class="col-12 col-md-6">
+                                            @if($news->document)
                                             <a class="btn btn-primary" href="{{asset('storage/'.$news->document)}}" download="">Descargar documento</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

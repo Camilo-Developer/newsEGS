@@ -17,6 +17,7 @@ use App\Http\Controllers\News\NewsController;
 */
 
 Route::get('/',[NewsController::class,'index'])->name('news.inicio');
+Route::get('/news/{news}',[NewsController::class,'show'])->name('news.show');
 
 
 

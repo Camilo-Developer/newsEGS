@@ -207,7 +207,7 @@
         </div>
     </main>
     <footer class="main-footer">
-        <strong>Copyright &copy; 2023 <a href="https://www.grupoegs.com/home"> E Global Services S.A.S</a>.</strong>
+        <strong>Copyright &copy; 2023 <a href="https://www.grupoegs.com/home"> Gestión Jurídica</a>.</strong>
         Derechos Reservados.
         <div class="float-right d-none d-sm-inline-block">
             <b>Versión</b> 1.1.0

@@ -35,6 +35,8 @@ class NewsController extends Controller
             'title' => 'required',
             'pre_description' => 'nullable',
             'description' => 'nullable',
+            'type_file' => 'nullable',
+            'direction_file' => 'nullable',
             'sub_imagen' => 'nullable',
             'document' => 'nullable',
             'state_id' => 'required',
@@ -88,14 +90,16 @@ class NewsController extends Controller
     {
         $request->validate([
             'imagen' => 'nullable',
-            'title' => 'nullable',
+            'title' => 'required',
             'pre_description' => 'nullable',
             'description' => 'nullable',
+            'type_file' => 'nullable',
+            'direction_file' => 'nullable',
             'sub_imagen' => 'nullable',
             'document' => 'nullable',
-            'state_id' => 'nullable',
-            'category_id' => 'nullable',
-            'user_id' => 'nullable',
+            'state_id' => 'required',
+            'category_id' => 'required',
+            'user_id' => 'required',
         ]);
         $data = $request->all();
 

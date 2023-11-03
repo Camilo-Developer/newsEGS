@@ -65,7 +65,7 @@
         </div>
         @can('admin.news.create')
             <div class="modal fade" id="modal_crear_noticia"  aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title"><i class="fa fa-check-circle"></i> Nueva Noticia</h4>
@@ -78,77 +78,147 @@
                             @method('POST')
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    <div style="max-height: 365px; overflow-y: scroll; overflow-x: hidden">
-                                        <div class="d-flex justify-content-end">
-                                            <span class="text-danger mt-1">* </span><span>Campo requerido.</span>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex justify-content-end">
+                                                <span class="text-danger mt-1">* </span><span>Campo requerido.</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="imagen"><span class="text-danger">*</span> Imagen principal:</label>
-                                            <input type="file" name="imagen"  class="form-control form-control-border" id="imagen">
-                                        </div>
+                                        <div class="col-md-3">
 
-                                        <div class="form-group">
-                                            <label for="title"><span class="text-danger">*</span> Titulo de la noticia:</label>
-                                            <input type="text" name="title"  class="form-control form-control-border" id="title" placeholder="Título">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="pre_description"><span class="text-danger">*</span> Pre description:</label>
-                                            <textarea id="pre_description" name="pre_description"  class="form-control" style="height: 500px!important;">
-                                            </textarea>
-                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <div style="max-height: 365px; overflow-y: scroll; overflow-x: hidden">
 
-                                        <div class="form-group">
-                                            <label for="description">Descripcion:</label>
-                                            <textarea id="description" name="description"  class="form-control" style="height: 500px!important;">
-                                        </textarea>
-                                        </div>
+                                                <div class="form-group">
+                                                    <label for="imagen"><span class="text-danger">*</span> Imagen principal de la noticia:</label>
+                                                    <input type="file" name="imagen"  class="form-control form-control-border" id="imagen">
+                                                </div>
+                                                @error('imagen')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                                <div class="form-group">
+                                                    <label for="title"><span class="text-danger">*</span> Titulo de la noticia:</label>
+                                                    <input type="text" name="title"  class="form-control form-control-border" id="title" placeholder="Título">
+                                                </div>
+                                                @error('title')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                                <div class="form-group">
+                                                    <label for="pre_description_limited">Pre descripción de la noticia:</label>
+                                                    <textarea class="form-control form-control-border" name="pre_description" id="pre_description_limited" cols="30" rows="10"></textarea>
+                                                    <label id="result_pre_description_limited"></label>
+                                                </div>
+                                                @error('pre_description')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+
+                                                <div class="form-group">
+                                                    <label for="description">Descripción general de la noticia:</label>
+                                                    <textarea id="description" name="description"  class="form-control" style="height: 500px!important;">
+                                                    </textarea>
+                                                </div>
+                                                @error('description')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                                <div class="row">
+                                                    <div class="col-12" id="tipo_archivo">
+                                                        <label>Seleccione el tipo del sub archivo que desea subir</label>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" id="imagensd"  type="radio" value="1" name="type_file">
+                                                            <label class="form-check-label" for="imagensd">Imagen</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" id="video"  type="radio" value="2" name="type_file">
+                                                            <label class="form-check-label" for="video">Video</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" id="audio" type="radio" value="3" name="type_file">
+                                                            <label class="form-check-label" for="audio">Audio</label>
+                                                        </div>
+                                                    </div>
+                                                    @error('type_file')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+
+                                                    <div class="col-12" id="direccion_archivo">
+                                                        <label>Dirección de la imagen o video</label>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" id="vertical"  type="radio" value="1" name="direction_file">
+                                                            <label class="form-check-label" for="vertical">Vertical</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" id="horinzontal"  type="radio" value="2" name="direction_file">
+                                                            <label class="form-check-label" for="horinzontal">Horinzontal</label>
+                                                        </div>
+                                                    </div>
+                                                    @error('direction_file')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                    <div class="col-12" id="subir_archivo">
+                                                        <div class="form-group">
+                                                            <input type="file" name="sub_imagen"  class="form-control form-control-border" id="sub_imagen">
+                                                        </div>
+                                                        @error('sub_imagen')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
 
 
-                                        <div class="form-group">
-                                            <label for="sub_imagen">Imagen o video secundario:</label>
-                                            <input type="file" name="sub_imagen"  class="form-control form-control-border" id="sub_imagen">
+                                                <div class="form-group">
+                                                    <label for="document">Documento de la noticia (Opcional):</label>
+                                                    <input type="file" name="document"  class="form-control form-control-border" id="document">
+                                                </div>
+                                                @error('document')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="state_id"><span class="text-danger mt-1">* </span>  Estado de la noticia:</label>
+                                                            <select class="custom-select form-control-border" name="state_id" id="state_id">
+                                                                <option >--Seleccionar Estado--</option>
+                                                                @foreach($states as $state)
+                                                                    <option value="{{$state->id}}" {{ old('state_id') == $state->id ? 'selected' : '' }}>{{$state->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        @error('state_id')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="category_id"><span class="text-danger mt-1">* </span>  Categoria de la noticia:</label>
+                                                            <select class="custom-select form-control-border" name="category_id" id="category_id">
+                                                                <option >--Seleccionar categoria--</option>
+                                                                @foreach($categories as $category)
+                                                                    <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        @error('category_id')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="user_id"><span class="text-danger mt-1">* </span>  Usuario de la noticia:</label>
+                                                            <select class="custom-select form-control-border" name="user_id" id="user_id">
+                                                                <option >--Seleccionar Usuario--</option>
+                                                                @foreach($users as $user)
+                                                                    <option value="{{$user->id}}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{$user->email}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        @error('user_id')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="document">Documento:</label>
-                                            <input type="file" name="document"  class="form-control form-control-border" id="document">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="state_id"><span class="text-danger mt-1">* </span>  Estado de la noticia:</label>
-                                            <select class="custom-select form-control-border" name="state_id" id="state_id">
-                                                <option >--Seleccionar Estado--</option>
-                                                @foreach($states as $state)
-                                                    <option value="{{$state->id}}" {{ old('state_id') == $state->id ? 'selected' : '' }}>{{$state->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        @error('state_id')
-                                        <span class="text-danger">{{$message}}</span>
-                                        @enderror
-                                        <div class="form-group">
-                                            <label for="category_id"><span class="text-danger mt-1">* </span>  Categoria de la noticia:</label>
-                                            <select class="custom-select form-control-border" name="category_id" id="category_id">
-                                                <option >--Seleccionar categoria--</option>
-                                                @foreach($categories as $category)
-                                                    <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        @error('category_id')
-                                        <span class="text-danger">{{$message}}</span>
-                                        @enderror
-                                        <div class="form-group">
-                                            <label for="user_id"><span class="text-danger mt-1">* </span>  Usuario de la noticia:</label>
-                                            <select class="custom-select form-control-border" name="user_id" id="user_id">
-                                                <option >--Seleccionar Usuario--</option>
-                                                @foreach($users as $user)
-                                                    <option value="{{$user->id}}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{$user->email}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        @error('user_id')
-                                        <span class="text-danger">{{$message}}</span>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -184,5 +254,65 @@
             );
         });
     </script>
+
+
+    <script>
+        $(document).ready(function() {
+            // Ocultar los campos iniciales
+            $('#direccion_archivo').hide();
+            $('#subir_archivo').hide();
+
+            // Escuchar cambios en el campo type_file
+            $('input[name="type_file"]').change(function() {
+                var selectedType = $('input[name="type_file"]:checked').val();
+
+                if (selectedType == 1 || selectedType == 2) {
+                    // Mostrar el campo direction_file si es una imagen o video
+                    $('#direccion_archivo').show();
+                    $('#subir_archivo').hide();
+                } else if (selectedType == 3) {
+                    // Mostrar solo el campo sub_imagen si es audio
+                    $('#direccion_archivo').hide();
+                    $('#subir_archivo').show();
+                }
+            });
+
+            // Escuchar cambios en el campo direction_file
+            $('input[name="direction_file"]').change(function() {
+                var selectedDirection = $('input[name="direction_file"]:checked').val();
+
+                if (selectedDirection == 1 || selectedDirection == 2) {
+                    // Mostrar el campo subir_archivo si se selecciona una dirección
+                    $('#subir_archivo').show();
+                }
+            });
+        });
+    </script>
+
+    <script>
+        var preDescriptionLimited = document.getElementById('pre_description_limited');
+        var ResultPreDescriptionLimited = document.getElementById('result_pre_description_limited');
+        var limit = 110;
+        ResultPreDescriptionLimited.textContent = 0 + "/" + limit;
+        preDescriptionLimited.addEventListener("input", function () {
+            textLength = preDescriptionLimited.value.length;
+            if (textLength > limit) {
+                preDescriptionLimited.value = preDescriptionLimited.value.substring(0, limit); // Truncate text to the limit
+                textLength = limit; // Actualiza la longitud al límite
+            }
+            ResultPreDescriptionLimited.textContent = textLength + "/" + limit;
+
+            if (textLength > limit) {
+                preDescriptionLimited.style.borderColor = "#ff2851";
+                ResultPreDescriptionLimited.style.color = "#ff2851";
+            } else {
+                preDescriptionLimited.style.borderColor = "#b2b2b2";
+                ResultPreDescriptionLimited.style.color = "#737373";
+            }
+        });
+    </script>
+
+
+
 
 @endsection

@@ -10,6 +10,7 @@
     <script type='text/javascript' src="{{asset('js/jquery-migrate.min.js')}}"></script>
     <script type='text/javascript' src="{{asset('js/bt_elements.js')}}"></script>
     <script type='text/javascript' src="{{asset('js/header.misc.js')}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('style')
   </head>
 <body class="page-template-default page page-id-2945 page-child parent-pageid-2065 theme-bold-news bt_bb_plugin_active bt_bb_fe_preview_toggle woocommerce-no-js bodyPreloader btMenuLeftEnabled btMenuBelowLogo btStickyEnabled btLightSkin btNoDashInSidebar btTopToolsInMenuArea btRemovePreloader btSoftRoundedButtons btNoSidebar" data-autoplay="0">
@@ -31,7 +32,7 @@
                             <a href="{{route('news.inicio')}}" target="_self" class="btIconWidget btAccentIconWidget btWidgetWithText text-decoration-none">
                                 <span class="btIconWidgetIcon">
                                     <span class="btIco btIcoDefaultType btIcoDefaultColor">
-                                        <span data-ico-fa="&#xf1ea;" class="btIcoHolder">                                            
+                                        <span data-ico-fa="&#xf1ea;" class="btIcoHolder">
                                         </span>
                                     </span>
                                 </span>
@@ -64,14 +65,14 @@
                     <span class="btVerticalMenuTrigger">
                         &nbsp;
                         <span class="btIco btIcoDefaultType">
-                            <a href="#" target="_self" data-ico-fa="&#xf0c9;" class="btIcoHolder">                        
+                            <a href="#" target="_self" data-ico-fa="&#xf0c9;" class="btIcoHolder">
                             </a>
                         </span>
                     </span>
                     <span class="btHorizontalMenuTrigger">
                         &nbsp;
                         <span class="btIco btIcoDefaultType">
-                            <a href="#" target="_self" data-ico-fa="&#xf0c9;" class="btIcoHolder">                            
+                            <a href="#" target="_self" data-ico-fa="&#xf0c9;" class="btIcoHolder">
                             </a>
                         </span>
                     </span>
@@ -79,7 +80,7 @@
                         <span>
                             <a href="{{route('news.inicio')}}">
                                 <img class="btMainLogo" data-hw="4.84" src="{{asset('recursos/user/img/logo.png')}}" alt="Logo News EGS">
-                            </a> 
+                            </a>
                         </span>
                     </div>
 
@@ -157,10 +158,10 @@
                                 <li id="menu-item-3950"
                                     class="btMenuWideDropdown bt_mega_menu menu-item menu-item-type-post_type menu-item-object-page menu-item-3950">
                                     <span class="bt_mega_menu_title"><a class="text-decoration-none" href="{{route('news.inicio')}}">Inicio</a></span>
-                                    
+
                                 </li>
-                                
-                                
+
+
                             </ul>
                         </nav>
                     </div><!-- .menuPort -->

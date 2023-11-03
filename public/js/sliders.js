@@ -1,16 +1,16 @@
 (function( $ ) {
-	
+
 	'use strict';
 
 	window.boldthemes_slider_preview = function( slider ) {
 		slider = $( slider );
-	
+
 		var active = slider.find( '.slick-center' );
 
 		if ( active.length == 0 ) active = slider.find( '.slick-active' );
 		var next = active.next( '.slidedItem' );
 		var prev = active.prev( '.slidedItem' );
-		
+
 		var next_img = next.data( 'thumb' );
 		var prev_img = prev.data( 'thumb' );
 		var next_text = next.find( '.h2content' ).first().html();
@@ -25,7 +25,7 @@
 		} else {
 			$( '.boldGetInfo' ).show();
 		}
-		
+
 		if ( active.data( 'text' ) != '' ) {
 			slider.parent().find( '.btPortfolioSliderCaption' ).parent().find( 'strong' ).show();
 			slider.parent().find( '.btPortfolioSliderCaption' ).html( active.data( 'text' ) ); // articleWithGhostGallery
@@ -41,18 +41,18 @@
 			slider.parent().find( '.btPortfolioSliderDescription' ).parent().find( 'strong' ).hide();
 			slider.parent().find( '.btPortfolioSliderDescription' ).html( '' );
 		}
-		
+
 		slider.find( '.nsNext .nbsTitle' ).html( next_text );
 		slider.find( '.nsPrev .nbsTitle' ).html( prev_text );
 
 		if ( next_img != '' && next_img !== undefined ) {
-			slider.find( '.nsNext .nbsImgHolder' ).show().css( 'background-image', 'url(\'' + next_img + '\')' );	
+			slider.find( '.nsNext .nbsImgHolder' ).show().css( 'background-image', 'url(\'' + next_img + '\')' );
 		} else {
 			slider.find( '.nsNext .nbsImgHolder' ).hide();
 		}
 
 		if ( prev_img != '' && prev_img !== undefined ) {
-			slider.find( '.nsPrev .nbsImgHolder' ).show().css( 'background-image', 'url(\'' + prev_img + '\')' );	
+			slider.find( '.nsPrev .nbsImgHolder' ).show().css( 'background-image', 'url(\'' + prev_img + '\')' );
 		} else {
 			slider.find( '.nsPrev .nbsImgHolder' ).hide();
 		}
@@ -66,20 +66,20 @@
 		$( '.slided' ).closest( '.port' ).addClass( 'wSlider' );
 		window.boldthemes_prevArrowHtml = '<h4 class="nbs nsPrev"><a><span class="nbsImage"><span class="nbsImgHolder"></span></span><span class="nbsItem"><span class="nbsTitle"></span></span></a></h4>';
 		window.boldthemes_nextArrowHtml = '<h4 class="nbs nsNext"><a><span class="nbsItem"><span class="nbsTitle"></span></span><span class="nbsImage"><span class="nbsImgHolder"></span></span></a></h4>';
-		
+
 		window.boldthemes_prevArrowHtml_simple = '<h4 class="nbs nsPrev"><a><span class="nbsItem"></span></a></h4>';
-		window.boldthemes_nextArrowHtml_simple = '<h4 class="nbs nsNext"><a><span class="nbsItem"></span></a></h4>';	
+		window.boldthemes_nextArrowHtml_simple = '<h4 class="nbs nsNext"><a><span class="nbsItem"></span></a></h4>';
 
 		$( '.slided' ).each(function() {
-			
+
 			var pArrow = window.boldthemes_prevArrowHtml;
 			var nArrow = window.boldthemes_nextArrowHtml;
-			
+
 			if ( $( this ).data( 'simple_arrows' ) == 'yes' ) {
 				pArrow = window.boldthemes_prevArrowHtml_simple;
 				nArrow = window.boldthemes_nextArrowHtml_simple;
-			} 
-			
+			}
+
 			var adaptiveSliderHeight = false;
 			if ( $( this ).hasClass( 'autoSliderHeight' ) ) {
 				adaptiveSliderHeight = true;
@@ -92,7 +92,7 @@
 			}
 
 			//$( this ).slick();
-		
+
 			$( this ).slick({
 				dots: true,
 				infinite: false,
@@ -105,22 +105,22 @@
 				rtl: $( 'body' ).hasClass('rtl'),
 				slide: '.slidedItem'
 			});
-			
+
 			$( this ).on( 'beforeChange', function( event, slick, currentSlide, nextSlide ) {
 				$( this ).find( '.slidedItem' ).eq( currentSlide ).find( '.animated' ).removeClass( 'animated' );
-			});			
-		
+			});
+
 			$( this ).on( 'afterChange', function( event, slick, currentSlide, nextSlide ) {
 				boldthemes_slider_preview( $( this ) );
-				
+
 				$( this ).find( '.slidedItem' ).eq( currentSlide ).find( '.animate' ).addClass( 'animated' );
 			});
-		
+
 			boldthemes_slider_preview( $( this ) );
-			
+
 			$( this ).find( '.slidedItem' ).first().find( '.animate' ).addClass( 'animated' );
 		});
-		
+
 		$( '.slidedVariable' ).each(function() {
 			var cmode = true;
 			if ( $( this ).data( 'nocenter' ) == 'yes' ) {
@@ -139,13 +139,13 @@
 				variableWidth: cmode,
 				rtl: $( 'body' ).hasClass('rtl')
 			});
-			
+
 			$( this ).on( 'afterChange', function( event, slick, currentSlide, nextSlide ) {
 				boldthemes_slider_preview( $( this ) );
-			});	
+			});
 
 			boldthemes_slider_preview( $( this ) );
-			
+
 		});
 
 		$( '.boldPhotoSlide' ).slick({
@@ -161,7 +161,7 @@
 			adaptiveHeight: true,
 			rtl: $( 'body' ).hasClass('rtl')
 		});
-		
+
 		// thumb cache
 		$( '.slick-slide' ).each(function() {
 			var url = $( this ).data( 'thumb' );
@@ -183,7 +183,7 @@
 				var slides1 = 4;
 				if ( slides < 6 ) {
 					slides1 = slides - 1;
-				} 
+				}
 				var slides2 = 2;
 				if ( slides < 3 ) {
 					var slides2 = 1;
@@ -200,7 +200,7 @@
 					var slides1 = 3;
 					var slides2 = 2;
 					var slides3 = 1;
-				}				
+				}
 				if ( $( this ).find( '.bclItem' ).length > 0 ) {
 
 					var is_rtl = false;
@@ -208,9 +208,9 @@
 						is_rtl = true;
 						$(  this ).attr('dir', 'rtl');
 					}
-					
+
 					var autoplay	  = $( this ).data( 'autoplay' );
-					var autoplaySpeed = 3000;					
+					var autoplaySpeed = 3000;
 					if ( autoplay === undefined ) {
 						autoplay = false;
 					}else{
@@ -269,7 +269,7 @@
 			});
 
 		}
-		
+
 		$( window ).resize(function() {
 			$( '.slided' ).each(function() {
 				$( this )[0].slick.setHeight();
@@ -286,7 +286,7 @@
 		$( '.slick-dots' ).each(function() {
 			$( this ).addClass( 'nol' + $( this ).find( 'li' ).length );
 		});
-		
+
 		$( '.slick-slider' ).on( 'click', function () {
 			$( this ).slick( 'slickPause' );
 		});
