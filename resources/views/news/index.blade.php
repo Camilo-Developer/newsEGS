@@ -57,9 +57,6 @@
                                                                 <div class="btMediaBoxPopupClose">
                                                                 </div>
                                                                 <div class="btMediaBox video" data-hw="0.5625">
-{{--                                                                    <img class="aspectVideo" src="https://bold-news.bold-themes.com/main-demo/wp-content/themes/bold-news/gfx/video-16.9.png" alt="title_news" role="presentation" aria-hidden="true">--}}
-{{--                                                                    <iframe width="560" height="315" data-src="https://www.youtube.com/embed/HQx5Be9g16U" allowfullscreen>--}}
-{{--                                                                    </iframe>--}}
                                                                     @if($newd->type_file == 1)
                                                                         <img style="width: 100%; height: 200px;" class="card-img-top" src="{{asset('storage/'.$newd->sub_imagen)}}" alt="Dist Photo 1">
 
